@@ -1,0 +1,16 @@
+[package]
+name = "ironhash"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+regex = "*"
+lazy_static = "1.4.0"
+rayon = "*"
+structopt = "*"
+tokio = { version = "*", features = ["full"] }
+serde_regex = "*"
+serde = { version = "*", features = ["derive"] }
+serde_json = "1.0.64"
