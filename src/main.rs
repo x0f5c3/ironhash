@@ -5,6 +5,7 @@ use std::fs::File;
 use std::io::Read;
 
 pub mod prototypes;
+pub use prototypes::identify_hash;
 
 #[derive(StructOpt, Debug)]
 struct App {
