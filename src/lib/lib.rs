@@ -1,7 +1,7 @@
-use regex::Regex;
-use std::fmt;
 use prototypes::PROTOTYPES;
 use rayon::prelude::*;
+use regex::Regex;
+use std::fmt;
 pub mod prototypes;
 #[derive(Debug, Clone)]
 pub struct Prototype {
@@ -34,11 +34,11 @@ impl HashResult {
         let res = PROTOTYPES
             .par_iter()
             .filter_map(|x| {
-                return if x.regex.is_match(&hash) {
+                if x.regex.is_match(&hash) {
                     Some(x.modes.modes.clone())
                 } else {
                     None
-                };
+                }
             })
             .collect::<Vec<Vec<Mode>>>();
         let mut result = Vec::new();
@@ -71,7 +71,7 @@ impl fmt::Display for HashInfo {
                 if let Some(john) = &mode.john {
                     hashtypes.push_str(&format!("[JtR Format: {}]", &john));
                 }
-                hashtypes.push_str("\n");
+                hashtypes.push('\n');
             }
         }
         write!(f, "{}", hashtypes)

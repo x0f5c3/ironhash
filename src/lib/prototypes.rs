@@ -1,9 +1,14 @@
-use crate::{HashInfo, Mode, Prototype};
 use lazy_static::lazy_static;
 use regex::Regex;
+
+use crate::{HashInfo, Mode, Prototype};
+
 lazy_static! {
-        pub static ref PROTOTYPES: Vec<Prototype> = vec![
-                Prototype {
+    pub static ref PROTOTYPES: Vec<Prototype> = make_proto();
+}
+fn make_proto() -> Vec<Prototype> {
+    vec![
+        Prototype {
                     regex: Regex::new(r"(?i)^[a-f0-9]{4}$").unwrap(),
                     modes: HashInfo {
                         modes: vec![
@@ -27,10 +32,10 @@ lazy_static! {
                             }
                         ]
            }},
-            Prototype {
-                regex: Regex::new(r"(?i)^[a-f0-9]{8}$").unwrap(),
-                modes: HashInfo {
- modes: vec![
+        Prototype {
+            regex: Regex::new(r"(?i)^[a-f0-9]{8}$").unwrap(),
+            modes: HashInfo {
+                modes: vec![
                     Mode {
                         john: None,
                         hashcat: None,
@@ -1058,7 +1063,7 @@ Mode {
                         name: "bcrypt".to_string()
                     }
                 ]
-           }},
+                }},
             Prototype {
         regex: Regex::new(r"(?i)^[a-f0-9]{40}:[a-f0-9]{16}$").unwrap(),
                 modes: HashInfo {
@@ -2505,5 +2510,5 @@ Mode {
                     }
                 ]
             }},
-    ];
+    ]
 }
